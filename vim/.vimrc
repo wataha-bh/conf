@@ -41,7 +41,7 @@ Plug 'junegunn/fzf.vim'
 " Autoformatter
 Plug 'vim-autoformat/vim-autoformat'
 
-" ALE!
+" ALE
 Plug 'dense-analysis/ale'
 
 call plug#end()
@@ -54,7 +54,7 @@ call plug#end()
 " ====================
 
 " Edit this file
-nnoremap <leader>vrc :e $MYVIMRC<CR>
+nnoremap <leader>vrc :e! $MYVIMRC<CR>
 
 " Source this file
 nnoremap <leader>r :source $MYVIMRC<CR>
@@ -90,6 +90,13 @@ nnoremap <leader>e :Files<CR>
 " Clear search highlight
 nnoremap <CR> :noh<CR>
 
+" Omnicompletion
+inoremap <expr> <tab> pumvisible() ? '<C-n>' : '<S-tab>'
+inoremap <expr> <S-tab> pumvisible() ? '<C-p>' : '<S-tab>'
+
+" Ale
+nnoremap gd :ALEGoToDefinition<CR>
+
 " ====================
 " REMAPS END
 " ====================
@@ -102,5 +109,14 @@ nnoremap <CR> :noh<CR>
 " ====================
 " ALE
 " ====================
-let b:ale_fixers = {'python': ['black', 'isort']}
 let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
+set omnifunc=ale#completion#OmniFunc
+
+call ale#linter#Define('c', {
+\   'name': 'clangd',
+\   'lsp': 'stdio',
+\   'executable': 'clangd',
+\   'command': '%e',
+\   'project_root': '/path/to/root_of_project',
+\})
