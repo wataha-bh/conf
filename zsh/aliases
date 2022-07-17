@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+alias vrc='$VISUAL "$HOME/conf/nvim/init.vim" && $HOME/conf/install'

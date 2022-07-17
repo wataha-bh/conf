@@ -1,0 +1,38 @@
+#!/bin/zsh
+CWD=${0:A:h}
+
+# Constants
+NVIM_CONFIG="$HOME/.config/nvim/"
+TMUX_CONFIG="$HOME/.config/tmux/"
+ZSH_CONFIG="$HOME/.config/zsh/"
+
+echo "Installing neovim configuration"
+
+mkdir -p $NVIM_CONFIG
+cp -r "$CWD/nvim/" $NVIM_CONFIG
+
+if [[ $1 == '-y' ]] || read -q "REPLY?Would you like to copy over tmux configuration? [y/N] "; then
+	echo ""
+	echo "Copying the .tmux.conf file"
+	cp "$CWD/tmux/.tmux.conf" "$HOME/.tmux.conf"
+	echo "Copying tmux scripts"
+	mkdir -p $TMUX_CONFIG
+	cp -r "$CWD/tmux/scripts/" $TMUX_CONFIG
+else
+	echo "Ignoring tmux conf"
+fi
+
+
+if [[ $1 == '-y' ]] || read -q "REPLY?Would you like to copy the zshrc aliases? [y/N] "; then
+	echo ""
+	echo "Copying aliases"
+	grep -F 'source "$HOME/.config/zsh/aliases"' "$HOME/.zshrc" >/dev/null 2>&1
+	if [[ $? != 0 ]]; then
+		echo '\n# Configuration aliases\nsource "$HOME/.config/zsh/aliases"\n' >> ~/.zshrc
+	fi
+	mkdir -p $ZSH_CONFIG
+	cp "$CWD/zsh/aliases" "$ZSH_CONFIG/aliases"
+else
+	echo "Ignoring zshrc"
+fi
+
