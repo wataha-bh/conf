@@ -1,8 +1,11 @@
 set nocp
 set ignorecase
 set smartcase
+set undofile
+
 filetype plugin on
 filetype on
+
 let mapleader = ','
 
 set relativenumber
@@ -52,6 +55,9 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " I'm sorry Tim
 Plug 'kylechui/nvim-surround'
+
+" Undotree
+Plug 'mbbill/undotree'
 
 call plug#end()
 

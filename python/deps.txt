@@ -51,6 +51,7 @@ pyflakes==2.4.0
 pygls==0.11.3
 Pygments==2.11.2
 pylint==2.14.4
+pylsp-rope==0.1.9
 pynvim==0.4.3
 pyparsing==2.4.7
 pyperclip==1.8.2
@@ -59,11 +60,13 @@ pytest==7.1.1
 python-lsp-black==1.2.1
 python-lsp-jsonrpc==1.0.0
 python-lsp-server==1.5.0
+pytoolconfig==1.2.1
 readme-renderer==34.0
 requests==2.27.1
 requests-toolbelt==0.9.1
 rfc3986==1.5.0
 rich==12.2.0
+rope==1.2.0
 semver==2.13.0
 six==1.16.0
 sniffio==1.2.0
