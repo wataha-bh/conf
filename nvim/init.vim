@@ -59,6 +59,12 @@ Plug 'kylechui/nvim-surround'
 " Undotree
 Plug 'mbbill/undotree'
 
+" Rescript
+Plug 'rescript-lang/vim-rescript'
+
+" Purescript
+" Plug 'purescript-contrib/purescript-vim'
+
 call plug#end()
 
 " ===============
@@ -100,6 +106,9 @@ nnoremap <silent> <leader>s <C-w>s
 " Clipboard
 xnoremap <silent> <leader>y "*y
 
+" Line break
+nnoremap <silent> <C-l> i<Enter><Esc>
+
 " ===============
 " LUA
 " ===============
@@ -110,3 +119,4 @@ xnoremap <silent> <leader>y "*y
 " ===============
 :lua vim.g.tokyonight_style = "night"
 colorscheme tokyonight
+

@@ -13,7 +13,8 @@ telescope.setup {
   },
   pickers = {
     find_files = {
-      find_command = { 'fd', '--no-ignore', '-t', 'file', '--hidden', '-E', '.git/', '-E', '__pycache__', '-E', 'node_modules/' },
+      find_command = { 'fd', '--no-ignore', '-t', 'file', '--hidden', '-E', '.git/', '-E', '__pycache__', '-E',
+        'node_modules/', '-E', '.venv/' },
     },
     git_files = {
       show_untracked = true,
@@ -38,6 +39,11 @@ telescope.setup {
   }
 }
 
-vim.api.nvim_set_keymap('n', '<leader>ff', ':lua require("telescope.builtin").find_files()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>g', ':lua require("telescope.builtin").live_grep()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>fg', ':lua require("telescope.builtin").git_files()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>ff', ':lua require("telescope.builtin").find_files()<CR>',
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>g', ':lua require("telescope.builtin").live_grep()<CR>',
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>fg', ':lua require("telescope.builtin").git_files()<CR>',
+  { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>fb', ':lua require("telescope.builtin").buffers()<CR>',
+  { noremap = true, silent = true })

@@ -46,7 +46,8 @@ local lspconfig = require('lspconfig')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
-local servers = { 'bashls', 'pyright', 'sumneko_lua' }
+local servers = { 'bashls', 'pyright', 'sumneko_lua', 'cssmodules_ls', 'emmet_ls', 'eslint',
+  'gopls', 'rust_analyzer', 'jsonls', 'cssls', 'rescriptls', 'ocamllsp', 'purescriptls' }
 for _, lsp in ipairs(servers) do
   if lsp == 'sumneko_lua' then
     lspconfig[lsp].setup {
@@ -73,6 +74,10 @@ for _, lsp in ipairs(servers) do
           },
         },
       },
+    }
+  elseif lsp == 'rescriptls' then
+    lspconfig[lsp].setup {
+      cmd = { 'node', vim.fn.expand('~/.local/share/nvim/plugged/vim-rescript/server/out/server.js'), '--stdio' }
     }
   elseif lsp == 'bashls' then
     lspconfig[lsp].setup {
@@ -105,7 +110,7 @@ cmp.setup {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<CR>'] = cmp.mapping.confirm {
+    ['<C-a>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
